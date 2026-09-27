@@ -19,6 +19,17 @@
             //b) How can private fields and public properties improve this design?
             // Make the fields private and use public properties to control access to the data and validate values before modifying them
             #endregion
+
+            #region Create one DeliveryAddress value, copy it into a second variable, modify the copy, and print both values to prove that the original did not change.
+
+            //DeliveryAddress address = new DeliveryAddress("sohag", "elzahraa", 17);
+            //DeliveryAddress addresscopy = address;
+            //addresscopy.City = "cairo";
+            //addresscopy.Street = "tttttttt";
+            //addresscopy.BuildingNumber = 10;
+            //Console.WriteLine(address.GetFullAddress());
+            //Console.WriteLine(addresscopy.GetFullAddress());
+            #endregion
         }
     }
 }
