@@ -10,6 +10,15 @@
             //What happens when a Customer variable is copied into another variable and one variable modifies the object
             //Customer is a reference type(class) so the reference(address) is copied not the object itself.Both variables point to the same object, so modifying it through one variable affects the other.
             #endregion
+
+            #region Question_02
+            //a) Identify at least three problems with this design from an encapsulation perspective.
+            //All fields are public, so they can be accessed and modified directly.
+            //There is no validation to prevent invalid values.
+            //The data is not protected, which violates encapsulation.
+            //b) How can private fields and public properties improve this design?
+            // Make the fields private and use public properties to control access to the data and validate values before modifying them
+            #endregion
         }
     }
 }
