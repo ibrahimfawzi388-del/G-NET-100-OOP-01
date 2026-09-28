@@ -121,6 +121,17 @@
             //    Console.WriteLine("Do you want to continue? Enter 1 for yes or 0 for NO");
             //}
             #endregion
+
+            #region Demonstrate the DeliveryAddress struct copy behavior.
+
+            //DeliveryAddress original = new DeliveryAddress("Cairo", "Tahrir Street", 10);
+
+            //DeliveryAddress copy = original;
+            //copy.City = "Alexandria";
+
+            //Console.WriteLine(original.City);
+            //Console.WriteLine(copy.City);
+            #endregion
         }
     }
 }
