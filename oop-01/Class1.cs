@@ -105,4 +105,59 @@ namespace oop_01
             Console.WriteLine(EstimatedCost);
         }
     }
+
+    public struct DeliveryCenter
+    {
+        private Shipment[]? array;
+        private bool [] position;
+        public DeliveryCenter()
+        {
+            array = new Shipment[10];
+            position = new bool[10];
+        }
+        public Shipment this[int index]
+        {
+            get
+            {
+                if (index >= 0 && index < 10 && position[index])
+                {
+                    return array[index];
+                }
+                return default;
+            }
+            set
+            {
+                if (index >= 0 && index < 10 && position[index])
+                {
+                    array[index] = value;
+                }
+            }
+        }
+        public Shipment this[string code]
+        {
+            get
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    if (array[i].trackingcode == code)
+                    {
+                        return array[i];
+                    }
+                }
+                return default;
+            }
+        }
+        public bool AddShipment(Shipment shipment)
+        {
+            for(int i = 0; i < 10; i++)
+            {
+                if (position[i])
+                {
+                    array[i]= shipment;
+                    return true;
+                }
+            }
+            return false;
+        }
+    }
 }
