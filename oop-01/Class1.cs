@@ -34,7 +34,7 @@ namespace oop_01
         { 
             get => TrackingCode;
 
-            private set
+            set
             {
                 TrackingCode = !string.IsNullOrWhiteSpace(value) ? value : TrackingCode;
             }
@@ -63,7 +63,7 @@ namespace oop_01
         {
             get => DeliveryFee;
 
-            private set
+             set
             {
                 DeliveryFee= value > 0 ? value : DeliveryFee;
             }
@@ -151,9 +151,10 @@ namespace oop_01
         {
             for(int i = 0; i < 10; i++)
             {
-                if (position[i])
+                if (!position[i])
                 {
                     array[i]= shipment;
+                    position[i]= true;
                     return true;
                 }
             }

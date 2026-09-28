@@ -2,6 +2,65 @@
 {
     internal class Program
     {
+        public static int numofelement = 0;
+        public static void adddata(Shipment shipment,DeliveryAddress deliveryAddress,DeliveryCenter deliveryCenter)
+        {
+            Console.WriteLine($"Enter Shipment {++numofelement} Data");
+            Console.Write($"Tracking Code : ");
+            shipment.trackingcode = Console.ReadLine();
+            Console.Write($"Description : ");
+            shipment.description = Console.ReadLine();
+            Console.Write($"Weight : ");
+            shipment.weight = int.Parse(Console.ReadLine());
+            Console.Write($"Delivery Fee : ");
+            shipment.deliveryfee = int.Parse(Console.ReadLine());
+            Console.Write($"City : ");
+            deliveryAddress.City = Console.ReadLine();
+            Console.Write($"Street : ");
+            deliveryAddress.Street = Console.ReadLine();
+            Console.Write($"Bulding Number : ");
+            deliveryAddress.BuildingNumber = int.Parse(Console.ReadLine());
+            shipment.Destination = deliveryAddress;
+            if (deliveryCenter.AddShipment(shipment))
+            {
+                Console.WriteLine("Shipment added successfully.");
+            }
+            else
+            {
+                numofelement--;
+                Console.WriteLine("No Place available");
+            }
+        }
+
+        public static void printallelemnt(DeliveryCenter deliveryCenter)
+        {
+            for (int i = 0; i < numofelement; i++)
+            {
+                Shipment shipment2 = deliveryCenter[i];
+
+                Console.WriteLine($"Tracking Code : {shipment2.trackingcode}");
+                Console.WriteLine($"Description : {shipment2.description}");
+                Console.WriteLine($"Wieght : {shipment2.weight}");
+                Console.WriteLine($"Delivery Fee :{shipment2.deliveryfee}");
+                Console.WriteLine($"Destination : {shipment2.Destination.GetFullAddress()}");
+                Console.WriteLine($"Estimated Cost : {shipment2.EstimatedCost}");
+            }
+        }
+
+        public static void searchbycode(DeliveryCenter deliveryCenter)
+        {
+            Console.WriteLine("enter a tracking code to search : ");
+            Shipment shipment1 = deliveryCenter[Console.ReadLine()];
+            if (shipment1.description != null)
+            {
+                Console.WriteLine($"Shipment found : {shipment1.trackingcode} - {shipment1.description}");
+            }
+            else
+            {
+                Console.WriteLine("Shipment is not found");
+            }
+        }
+
         static void Main(string[] args)
         {
             #region Question01
@@ -29,6 +88,38 @@
             //addresscopy.BuildingNumber = 10;
             //Console.WriteLine(address.GetFullAddress());
             //Console.WriteLine(addresscopy.GetFullAddress());
+            #endregion
+
+            #region  Console Application
+
+            //DeliveryCenter deliveryCenter=new DeliveryCenter();
+            //Shipment shipment=new Shipment();
+            //DeliveryAddress deliveryAddress=new DeliveryAddress();
+
+            //int choice;
+            //do
+            //{
+            //    adddata(shipment, deliveryAddress, deliveryCenter);
+            //    Console.WriteLine();
+            //    Console.WriteLine("Do you want to continue? Enter 1 for yes or 0 for NO");
+            //    choice = int.Parse(Console.ReadLine());
+            //}
+            //while (choice == 1);
+            //Console.WriteLine();
+            //Console.WriteLine("if you want print all shipments enter 1 for print or 0 to exit");
+
+            //if(int.Parse(Console.ReadLine())==1)
+            //{
+            //    printallelemnt(deliveryCenter);
+            //}
+            //Console.WriteLine();
+            //Console.WriteLine("if you want Search for the shipment using code enter 1 to continue or 0 to exit");
+            //while (int.Parse(Console.ReadLine())==1)
+            //{
+            //    searchbycode(deliveryCenter);
+            //    Console.WriteLine();
+            //    Console.WriteLine("Do you want to continue? Enter 1 for yes or 0 for NO");
+            //}
             #endregion
         }
     }
